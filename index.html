@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Route Finder - Bahir Dar</title>
+    <!-- Leaflet Maps CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <!-- Link to your updated stylesheet -->
+    <link rel="stylesheet" href="style_2.css">
+</head>
+<body>
+<div class="container">
+    <h1>🗺 Bahir Dar Route Finder (A*)</h1>
+
+    <div class="controls">
+        <input list="locations" id="start" placeholder="Current Location">
+        <input list="locations" id="goal" placeholder="Destination">
+        
+        <datalist id="locations">
+            <option value="Giorgis">
+            <option value="Fasilo">
+            <option value="Stadium">
+            <option value="Market">
+            <option value="Tana Shore">
+            <option value="BDU Main">
+            <option value="Polytechnic">
+            <option value="Technology Campus">
+            <option value="Shumabo">
+            <option value="Abay Bridge">
+            <option value="Airport">
+            <option value="Gish Abay">
+            <option value="Meskel Square">
+            <option value="Zuria">
+            <option value="Bezawit">
+            <option value="Kidane Meheret">
+            <option value="Lemat">
+            <option value="Hidase">
+            <option value="Peda Campus">
+            <option value="Medicine Campus">
+        </datalist>
+
+        <button id="findBtn">Find Route</button>
+    </div>
+
+    <div id="status"></div>
+    <div id="result"></div>
+    
+    <!-- The Map View -->
+    <div id="map"></div>
+
+    <!-- The Developer Team View -->
+    <div class="developer-view">
+        <h2>Meet the Developers</h2>
+        <div class="team-grid">
+            <div class="member-card">
+                <div class="member-pic">👤</div>
+                <div class="member-name">Gatwech Deng</div>
+                <div class="member-id">ID: 12345 / Group 11</div>
+            </div>
+            
+            <div class="member-card">
+                <div class="member-pic">👤</div>
+                <div class="member-name">Member Name</div>
+                <div class="member-id">ID: 67890 / Group 11</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- External Scripts -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="map.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

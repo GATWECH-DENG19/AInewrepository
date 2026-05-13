@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", initMap);
 
 /**
  * Dictionary of 20 locations in Bahir Dar.
- * Names must match the lowercase_underscore format used in the Prolog backend.
  */
 function getCoordinates(place) {
     const locations = {
@@ -49,7 +48,7 @@ function getCoordinates(place) {
 }
 
 /**
- * Formats underscore names back to readable titles (e.g., "gish_abay" -> "Gish Abay").
+ * Formats underscore names back to readable titles.
  */
 function formatName(name) {
     return name.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase());
@@ -68,20 +67,25 @@ function drawRoute(path) {
 
     let latlngs = [];
 
+    // Integrated the new loop with name cleaning and specific labels
     path.forEach((place, i) => {
-        const coords = getCoordinates(place);
+        // Convert to lowercase and replace spaces just in case
+        const cleanPlace = place.toLowerCase().trim().replace(/\s+/g, "_");
+        const coords = getCoordinates(cleanPlace);
 
         if (!coords) {
-            console.warn("Missing coords in map.js for:", place);
+            console.error("❌ Map Error: Location '" + place + "' is in Prolog but missing from map.js coordinates!");
             return;
         }
 
         latlngs.push(coords);
 
-        // Add individual markers for each node in the path
+        // Marker styling logic
+        let label = (i === 0) ? 'Start' : (i === path.length - 1) ? 'Destination' : 'Step ' + (i + 1);
+        
         let marker = L.marker(coords)
             .addTo(map)
-            .bindPopup(`<b>${formatName(place)}</b><br>Step ${i + 1}`);
+            .bindPopup(`<b>${formatName(place)}</b><br>${label}`);
 
         markers.push(marker);
     });
@@ -100,11 +104,10 @@ function drawRoute(path) {
 }
 
 /**
- * Clears existing routes and markers before drawing a new search result.
+ * Clears existing routes and markers.
  */
 function clearMap() {
     if (routeLine) map.removeLayer(routeLine);
-
     markers.forEach(m => map.removeLayer(m));
     markers = [];
 }

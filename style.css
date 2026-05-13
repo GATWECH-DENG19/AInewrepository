@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f4f6f8;
+}
+
+.container {
+    padding: 15px;
+    max-width: 900px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#map {
+    height: 400px;
+    margin-top: 10px;
+}
+
+#status {
+    margin-top: 10px;
+    color: green;
+}
+
+#result {
+    margin-top: 10px;
+    font-weight: bold;
+}

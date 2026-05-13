@@ -36,6 +36,9 @@ button {
 #map {
     height: 400px;
     margin-top: 10px;
+    z-index: 1; /* Ensures map stays behind dropdowns but visible */
+    border-radius: 10px; /* Makes it look more modern */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 #status {
